@@ -5,8 +5,6 @@ import com.tdd.tictactoetddlearning.presentation.state.GameState
 import com.tdd.tictactoetddlearning.presentation.state.UIEvent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlin.collections.get
-import kotlin.text.set
 
 class GameViewModel : ViewModel() {
 
@@ -35,12 +33,13 @@ class GameViewModel : ViewModel() {
         newBoard[index] = s.currentPlayer
 
         val winner = checkWinner(newBoard)
+        val isDraw = winner == null && newBoard.none { it == null }
 
         _state.value = s.copy(
             board = newBoard,
-            currentPlayer = togglePlayer(s.currentPlayer),
+            currentPlayer = if (winner == null) togglePlayer(s.currentPlayer) else s.currentPlayer,
             winner = winner,
-            isDraw = false
+            isDraw = isDraw
         )
     }
 
