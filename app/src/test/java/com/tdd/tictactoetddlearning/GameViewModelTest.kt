@@ -124,4 +124,19 @@ class GameViewModelTest {
 
         assertEquals('O', viewModel.state.value.winner)
     }
+
+    @Test
+    fun `test match draw`() {
+        viewModel.onEvent(UIEvent.OnCellClicked(0))
+        viewModel.onEvent(UIEvent.OnCellClicked(1))
+        viewModel.onEvent(UIEvent.OnCellClicked(2))
+        viewModel.onEvent(UIEvent.OnCellClicked(6))
+        viewModel.onEvent(UIEvent.OnCellClicked(7))
+        viewModel.onEvent(UIEvent.OnCellClicked(8))
+        viewModel.onEvent(UIEvent.OnCellClicked(3))
+        viewModel.onEvent(UIEvent.OnCellClicked(4))
+        viewModel.onEvent(UIEvent.OnCellClicked(5))
+
+        assertEquals(true, viewModel.state.value.isDraw)
+    }
 }
