@@ -15,6 +15,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+/**
+ * Individual cell of board marked by X/O
+ */
 @Composable
 fun BoardCell(value: Char?, onClick: () -> Unit) {
     Box(

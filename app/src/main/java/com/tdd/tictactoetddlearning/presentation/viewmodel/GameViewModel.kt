@@ -6,6 +6,9 @@ import com.tdd.tictactoetddlearning.presentation.state.UIEvent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+/**
+ * Main class that holds the core logic of the game
+ */
 class GameViewModel : ViewModel() {
 
     private val _state = MutableStateFlow(GameState())

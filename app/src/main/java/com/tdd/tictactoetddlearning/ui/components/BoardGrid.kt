@@ -6,6 +6,9 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import com.tdd.tictactoetddlearning.presentation.state.GameState
 
+/**
+ * Board of 3x3 dimensions for the game
+ */
 
 @Composable
 fun BoardGrid(state: GameState, onCellClick: (Int) -> Unit) {

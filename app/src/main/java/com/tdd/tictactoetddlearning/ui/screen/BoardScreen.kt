@@ -20,6 +20,9 @@ import com.tdd.tictactoetddlearning.presentation.state.UIEvent
 import com.tdd.tictactoetddlearning.presentation.viewmodel.GameViewModel
 import com.tdd.tictactoetddlearning.ui.components.BoardGrid
 
+/**
+ * This is the Board screen where users tap in the cell and play the game
+ */
 @Composable
 fun BoardScreen(modifier: Modifier, viewModel: GameViewModel = viewModel()) {
     val state by viewModel.state.collectAsState()
