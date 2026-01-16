@@ -68,4 +68,38 @@ class GameViewModelTest {
 
         assertEquals('O', viewModel.state.value.winner)
     }
+
+    @Test
+    fun `test winner X First Column`() {
+        viewModel.onEvent(UIEvent.OnCellClicked(0)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(1)) // O
+        viewModel.onEvent(UIEvent.OnCellClicked(3)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(8)) // O
+        viewModel.onEvent(UIEvent.OnCellClicked(6)) // X
+
+        assertEquals('X', viewModel.state.value.winner)
+    }
+
+    @Test
+    fun `test winner X Second Column`() {
+        viewModel.onEvent(UIEvent.OnCellClicked(1)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(5)) // O
+        viewModel.onEvent(UIEvent.OnCellClicked(4)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(2)) // O
+        viewModel.onEvent(UIEvent.OnCellClicked(7)) // X
+
+        assertEquals('X', viewModel.state.value.winner)
+    }
+
+    @Test
+    fun `test winner O Third Column`() {
+        viewModel.onEvent(UIEvent.OnCellClicked(0)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(2)) // O
+        viewModel.onEvent(UIEvent.OnCellClicked(1)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(5)) // O
+        viewModel.onEvent(UIEvent.OnCellClicked(7)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(8)) // O
+
+        assertEquals('O', viewModel.state.value.winner)
+    }
 }
