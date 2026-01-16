@@ -29,13 +29,17 @@ class GameViewModel : ViewModel() {
     private fun handleTap(index: Int) {
         val s = _state.value
 
+        if (s.board[index] != null || s.winner != null) return
+
         val newBoard = s.board.toMutableList()
         newBoard[index] = s.currentPlayer
+
+        val winner = checkWinner(newBoard)
 
         _state.value = s.copy(
             board = newBoard,
             currentPlayer = togglePlayer(s.currentPlayer),
-            winner = null,
+            winner = winner,
             isDraw = false
         )
     }
@@ -45,5 +49,20 @@ class GameViewModel : ViewModel() {
      */
     private fun togglePlayer(c: Char) = if (c == 'X') 'O' else 'X'
 
+    /**
+     * Logic to check winner
+     */
+    private fun checkWinner(board: List<Char?>): Char? {
+        val wins = listOf(
+            listOf(0,1,2), listOf(3,4,5), listOf(6,7,8), // rows
+        )
+        for (w in wins) {
+            val (a,b,c) = w
+            if (board[a] != null && board[a] == board[b] && board[b] == board[c]) {
+                return board[a]
+            }
+        }
+        return null
+    }
 
 }
