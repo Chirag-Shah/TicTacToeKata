@@ -139,4 +139,10 @@ class GameViewModelTest {
 
         assertEquals(true, viewModel.state.value.isDraw)
     }
+
+    @Test
+    fun `test single tap should not draw match`(){
+        viewModel.onEvent(UIEvent.OnCellClicked(4)) // X
+        assertEquals(false, viewModel.state.value.isDraw)
+    }
 }
