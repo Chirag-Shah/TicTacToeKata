@@ -27,4 +27,11 @@ class GameViewModelTest {
         viewModel.onEvent(UIEvent.OnCellClicked(0))
         assertEquals('O', viewModel.state.value.currentPlayer)
     }
+
+    @Test
+    fun `test restart match`() {
+        viewModel.onEvent(UIEvent.OnCellClicked(0))
+        viewModel.onEvent(UIEvent.Restart)
+        assertEquals(null, viewModel.state.value.board[0])
+    }
 }
