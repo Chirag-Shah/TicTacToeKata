@@ -19,8 +19,7 @@ class GameViewModel : ViewModel() {
     fun onEvent(event: UIEvent) {
         when (event) {
             is UIEvent.OnCellClicked -> handleTap(event.index)
-            UIEvent.Restart -> { //To-Do
-            }
+            UIEvent.Restart -> _state.value = GameState()
         }
     }
 
@@ -45,4 +44,6 @@ class GameViewModel : ViewModel() {
      * Toggle player X and O
      */
     private fun togglePlayer(c: Char) = if (c == 'X') 'O' else 'X'
+
+
 }
