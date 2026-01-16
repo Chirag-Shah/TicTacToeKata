@@ -21,4 +21,10 @@ class GameViewModelTest {
         viewModel.onEvent(UIEvent.OnCellClicked(0))
         assertEquals('X', viewModel.state.value.board[0])
     }
+
+    @Test
+    fun `test player toggles after move`() {
+        viewModel.onEvent(UIEvent.OnCellClicked(0))
+        assertEquals('O', viewModel.state.value.currentPlayer)
+    }
 }
