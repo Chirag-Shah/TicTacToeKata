@@ -5,7 +5,6 @@ import com.tdd.tictactoetddlearning.presentation.viewmodel.GameViewModel
 import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Test
-import kotlin.collections.get
 
 class GameViewModelTest {
 
@@ -99,6 +98,29 @@ class GameViewModelTest {
         viewModel.onEvent(UIEvent.OnCellClicked(5)) // O
         viewModel.onEvent(UIEvent.OnCellClicked(7)) // X
         viewModel.onEvent(UIEvent.OnCellClicked(8)) // O
+
+        assertEquals('O', viewModel.state.value.winner)
+    }
+
+    @Test
+    fun `test winner X First Diagonal 1`() {
+        viewModel.onEvent(UIEvent.OnCellClicked(0)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(1)) // O
+        viewModel.onEvent(UIEvent.OnCellClicked(4)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(2)) // O
+        viewModel.onEvent(UIEvent.OnCellClicked(8)) // X
+
+        assertEquals('X', viewModel.state.value.winner)
+    }
+
+    @Test
+    fun `test winner O First Diagonal 2`() {
+        viewModel.onEvent(UIEvent.OnCellClicked(1)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(4)) // O
+        viewModel.onEvent(UIEvent.OnCellClicked(0)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(2)) // O
+        viewModel.onEvent(UIEvent.OnCellClicked(3)) // X
+        viewModel.onEvent(UIEvent.OnCellClicked(6)) // O
 
         assertEquals('O', viewModel.state.value.winner)
     }
